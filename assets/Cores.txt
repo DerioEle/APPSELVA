@@ -1,0 +1,10 @@
+iconeLupa              | #838080
+
+IconeSensor            |
+IconeMapa              | #0C760A
+IconeInformacoes       |
+
+IconeMinhaLocalizacao  | #2547D5
+
+IconeMenosZoom         | #000000
+IconeMaisZoom          |

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Button, TouchableOpacity, Text, } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text, } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
 export default function Mapa() {
