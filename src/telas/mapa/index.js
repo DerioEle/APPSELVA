@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     right: 10,
     backgroundColor: '#fff',
     borderRadius: 10,
-    borderColor: "#000",
+    borderColor: "#808080",
     borderWidth:1,
     
   },
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   divider: {
     height: 1,
     width: '100%',
-    backgroundColor: '#000',
+    backgroundColor: '#808080',
     flexDirection: 'row',
     alignItems: 'center',
   },
