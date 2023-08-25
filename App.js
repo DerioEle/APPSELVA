@@ -5,7 +5,7 @@ import MapaTeste from './src/telas/mapa/componentes/teste';
 
 export default function App() {
   return (
-    <Mapa/>
+    <MapaTeste/>
   );
 }
 
