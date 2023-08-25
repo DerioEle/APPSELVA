@@ -4,6 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import ZoomMais from "../../../../assets/IconeMaisZoom.svg";
 import ZoomMenos from "../../../../assets/reduzir-o-zoom.svg";
 
+
 export default function App() {
   const mapRef = useRef(null);
   const [mapRegion, setMapRegion] = useState({
@@ -13,25 +14,25 @@ export default function App() {
     longitudeDelta: 0.0421,
   });
 
-  const handleZoomIn = () => {
-    const zoomedRegion = {
-      ...mapRegion,
-      latitudeDelta: mapRegion.latitudeDelta / 2,
-      longitudeDelta: mapRegion.longitudeDelta / 2,
-    };
-    setMapRegion(zoomedRegion);
-    mapRef.current.animateToRegion(zoomedRegion, 200);
-  };
+   const handleZoomIn = () => {
+     const zoomedRegion = {
+       ...mapRegion,
+       latitudeDelta: mapRegion.latitudeDelta / 2,
+       longitudeDelta: mapRegion.longitudeDelta / 2,
+     };
+     setMapRegion(zoomedRegion);
+     mapRef.current.animateToRegion(zoomedRegion, 200);
+   };
 
-  const handleZoomOut = () => {
-    const zoomedOutRegion = {
-      ...mapRegion,
-      latitudeDelta: mapRegion.latitudeDelta * 2,
-      longitudeDelta: mapRegion.longitudeDelta * 2,
-    };
-    setMapRegion(zoomedOutRegion);
-    mapRef.current.animateToRegion(zoomedOutRegion, 200);
-  };
+   const handleZoomOut = () => {
+     const zoomedOutRegion = {
+       ...mapRegion,
+       latitudeDelta: mapRegion.latitudeDelta * 2,
+       longitudeDelta: mapRegion.longitudeDelta * 2,
+     };
+     setMapRegion(zoomedOutRegion);
+     mapRef.current.animateToRegion(zoomedOutRegion, 200);
+   };
 
   return (
     <View style={styles.container}>
@@ -43,11 +44,10 @@ export default function App() {
       >
       </MapView>
 
-      <View style={styles.buttonContainer}>
+      {/* <View style={styles.buttonContainer}>
         <TouchableOpacity 
             style={styles.button} 
             onPress={handleZoomIn}>
-          {/* <Text style={styles.buttonText}>+</Text> */}
           <ZoomMais />
         </TouchableOpacity>
 
@@ -56,10 +56,9 @@ export default function App() {
         <TouchableOpacity 
             style={styles.button} 
             onPress={handleZoomOut}>
-          {/* <Text style={styles.buttonText}>-</Text> */}
           <ZoomMenos />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
