@@ -1,95 +1,104 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, TouchableOpacity, Text, } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import React, { useState, useRef } from 'react';
+import { StyleSheet, View, Dimensions, TouchableOpacity, Text } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import ZoomMais from "../../../assets/IconeMaisZoom.svg";
+import ZoomMenos from "../../../assets/reduzir-o-zoom.svg";
 
-export default function Mapa() {
-  const [region, setRegion] = useState({
-    latitude:  -3.10719,
+
+export default function MapaTeste() {
+  const mapRef = useRef(null);
+  const [mapRegion, setMapRegion] = useState({
+    latitude: -3.10719,
     longitude: -60.0261,
-    latitudeDelta: 0.05,
-    longitudeDelta: 0.05,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
   });
 
-  const onZoomIn = () => {
-    setRegion({
-      ...region,
-      latitudeDelta: region.latitudeDelta / 2,
-      longitudeDelta: region.longitudeDelta / 2,
-    }); 
-  };
+   const handleZoomIn = () => {
+     const zoomedRegion = {
+       ...mapRegion,
+       latitudeDelta: mapRegion.latitudeDelta / 2,
+       longitudeDelta: mapRegion.longitudeDelta / 2,
+     };
+     setMapRegion(zoomedRegion);
+     mapRef.current.animateToRegion(zoomedRegion, 200);
+   };
 
-  const onZoomOut = () => {
-    setRegion({
-      ...region,
-      latitudeDelta: region.latitudeDelta * 2,
-      longitudeDelta: region.longitudeDelta * 2,
-    });
-  };
+   const handleZoomOut = () => {
+     const zoomedOutRegion = {
+       ...mapRegion,
+       latitudeDelta: mapRegion.latitudeDelta * 2,
+       longitudeDelta: mapRegion.longitudeDelta * 2,
+     };
+     setMapRegion(zoomedOutRegion);
+     mapRef.current.animateToRegion(zoomedOutRegion, 200);
+   };
 
   return (
     <View style={styles.container}>
       <MapView
+        ref={mapRef}
         style={styles.map}
-        region={region}
-        onRegionChange={setRegion}
-      />
-      <View style={styles.button}>
-      <TouchableOpacity
-        onPress={onZoomIn}
-        style={styles.buttonIn}
+        initialRegion={mapRegion}
+        onRegionChange={setMapRegion}
       >
-        <Text>Zoom In</Text>
-      </TouchableOpacity>
-      <View style={styles.divider} />
-      <TouchableOpacity
-        onPress={onZoomOut}
-        style={styles.buttonOut}
-      >
-        <Text>Zoom Out</Text>
-      </TouchableOpacity>
+      </MapView>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity 
+            style={styles.button} 
+            onPress={handleZoomIn}>
+          <ZoomMais />
+        </TouchableOpacity>
+
+        <View style={styles.divider} />
+
+        <TouchableOpacity 
+            style={styles.button} 
+            onPress={handleZoomOut}>
+          <ZoomMenos />
+        </TouchableOpacity>
       </View>
-      
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   map: {
-    flex: 1,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
-  button: {
+  buttonContainer: {
     marginTop: 120,
     alignSelf: "center",
-    width: 50,
+    width: 40,
     height: 75,
     position: "absolute",
     top: 50,
     right: 10,
     backgroundColor: '#fff',
     borderRadius: 10,
-    borderColor: "#808080",
-    borderWidth:1,
-    
+    borderColor: "#CDCDCD",
   },
-  buttonIn:{
+  button: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-  buttonOut:{
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  buttonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   divider: {
     height: 1,
     width: '100%',
-    backgroundColor: '#808080',
+    backgroundColor: '#CDCDCD',
     flexDirection: 'row',
     alignItems: 'center',
   },
-
 });

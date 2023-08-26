@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Mapa from './src/telas/mapa';
-import MapaTeste from './src/telas/mapa/componentes/teste';
+import MapaTeste from './src/telas/mapa';
+import SensorDisplay from './src/telas/listaSensores';
+import Telas from './src/routes/rotasTelas';
 
 export default function App() {
   return (
-    <MapaTeste/>
+    <Telas/>
   );
 }
 
