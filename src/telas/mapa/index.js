@@ -45,8 +45,8 @@ export default function MapaTeste({ navigation }) {
       mapRef.current.animateToRegion({
         latitude: mapRef.current.__lastRegion.latitude,
         longitude: mapRef.current.__lastRegion.longitude,
-        latitudeDelta: mapRef.current.__lastRegion.latitudeDelta / 2.2,
-        longitudeDelta: mapRef.current.__lastRegion.longitudeDelta / 2.2,
+        latitudeDelta: mapRef.current.__lastRegion.latitudeDelta / 2,
+        longitudeDelta: mapRef.current.__lastRegion.longitudeDelta / 2,
       }, 200);
     }
   }, []);
