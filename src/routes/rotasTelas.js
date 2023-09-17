@@ -45,7 +45,7 @@ export default function Telas() {
       },
       
       })}>
-      <Tab.Screen name='Mapa' component={MapaTeste} />
+      <Tab.Screen name='Mapa' component={MapaTeste}  />
       <Tab.Screen name='Sensores' component={SensorDisplay} />
       <Tab.Screen name='Informações' component={Infos} />
       
