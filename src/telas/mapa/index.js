@@ -3,11 +3,14 @@ import { StyleSheet, View, Dimensions, TouchableOpacity, Text } from 'react-nati
 import MapView, { Marker } from 'react-native-maps';
 import ZoomMais from "../../../assets/IconeMaisZoom.svg";
 import ZoomMenos from "../../../assets/reduzir-o-zoom.svg";
+import Inicio from "../../../assets/IconeminhaLocalizacao.svg";
 import { useFocusEffect } from '@react-navigation/native';
 import { fetchAirQualityData } from '../../services/carregaDadosMapa';
 import CustomMarker from './componentes/marcador';
+import { useNavigation } from '@react-navigation/native';
 
-export default function MapaTeste({ navigation }) {
+export default function MapaTeste() {
+  const navigation = useNavigation();
   const mapRef = useRef(null);
   const [airQualityData, setAirQualityData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -62,6 +65,17 @@ export default function MapaTeste({ navigation }) {
     }
   }, []);
 
+  const handleReturnToInitialPosition = useCallback(() => {
+    if (mapRef.current) {
+      mapRef.current.animateToRegion({
+        latitude: -3.10719,
+        longitude: -60.0261,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }, 200);
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
       <MapView
@@ -90,7 +104,7 @@ export default function MapaTeste({ navigation }) {
             />
           ))}
       </MapView>
-
+      {/* Botão de Zoom */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
@@ -108,6 +122,14 @@ export default function MapaTeste({ navigation }) {
           <ZoomMenos />
         </TouchableOpacity>
       </View>
+
+      {/* Botão para retornar à posição inicial */}
+      <TouchableOpacity
+        style={styles.returnButton}
+        onPress={handleReturnToInitialPosition}
+      >
+        <Inicio />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -149,5 +171,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#CDCDCD',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  returnButton: {
+    position: 'absolute',
+    marginTop: 220,
+    top: 40,
+    right: 10,
+    backgroundColor: 'white',
+    padding: 5,
+    borderRadius: 20,
   },
 });

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Marker } from 'react-native-maps';
 
 export default function CustomMarker({ coordinate, airQuality }) {
-  let markerColor = 'green';
+  let markerColor = '#7FF446';
 
   if (airQuality >= 25 && airQuality < 50) {
     markerColor = 'yellow';

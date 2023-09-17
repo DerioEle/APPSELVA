@@ -4,8 +4,8 @@ import MapaTeste from '../telas/mapa';
 import SensorDisplay from '../telas/listaSensores';
 import Infos from '../telas/infos';
 import Mapa from "../../assets/mapa.svg";
-import Sensor from "../../assets/IconeSensor1.svg";
-import Info from "../../assets/IconeInformacoes1.svg";
+import Sensor from "../../assets/SinalNovo.svg";
+import Info from "../../assets/Infos.svg";
 
 const Tab = createBottomTabNavigator();
 let tamanho = 25
@@ -26,10 +26,9 @@ export default function Telas() {
 
         return <Icon color={color} fill={color} width={tamanho} height={tamanho} />
       },
-      tabBarActiveTintColor: "#0C760A",
-
       //Vai ficar comentando até eu aprender a mexer
       // tabBarActiveBackgroundColor: "#D3EAD3",
+      tabBarActiveTintColor: "#0C760A",
       tabBarInactiveTintColor: "#797777",
       tabBarLabelStyle: {
         fontSize: 15,
