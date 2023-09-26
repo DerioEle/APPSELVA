@@ -6,6 +6,7 @@ export default function CustomMarker({ coordinate, airQuality }) {
   let markerColor = '#7FF446';
 
   if (airQuality >= 25 && airQuality < 50) {
+    // Deixar as cores em hexadecimal
     markerColor = 'yellow';
   } else if (airQuality >= 50 && airQuality < 75) {
     markerColor = 'orange';
