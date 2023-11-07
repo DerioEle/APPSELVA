@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
-import { StyleSheet, View, Dimensions, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, TouchableOpacity, Text ,Image} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import ZoomMais from "../../../assets/IconeMaisZoom.svg";
 import ZoomMenos from "../../../assets/reduzir-o-zoom.svg";
+import Niveis from "../../../assets/niveis2.png";
 import Inicio from "../../../assets/IconeminhaLocalizacao.svg";
 import { useFocusEffect } from '@react-navigation/native';
 import { fetchAirQualityData } from '../../services/carregaDadosMapa';
@@ -130,6 +131,9 @@ export default function MapaTeste() {
       >
         <Inicio />
       </TouchableOpacity>
+      <View >
+        <Image source={Niveis} style={styles.niveisContainer} />
+      </View>
     </View>
   );
 }
@@ -180,5 +184,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 5,
     borderRadius: 20,
+  },
+  niveisContainer:{
+    position: 'absolute', 
+    bottom: 85, 
+    left: -190,
+    width: 310, 
+    height: 60
+
   },
 });
